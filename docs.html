@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs — ELARIS</title>
+  <meta name="description" content="Public docs for the ELARIS platform, hardware flow, entities and module model." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/favicon.ico" alt="ELARIS logo" />
+      <div class="brand-copy">
+        <strong>ELARIS</strong>
+        <span>Smart Control</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a data-nav href="index.html">Home</a>
+      <a data-nav href="features.html">Features</a>
+      <a data-nav href="modules.html">Modules</a>
+      <a data-nav href="hardware.html">ESPHome & Hardware</a>
+      <a data-nav href="roadmap.html">Roadmap</a>
+      <a data-nav href="docs.html">Docs</a>
+      <a data-nav href="community.html">Community</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-small" href="community.html">Channels</a>
+      <a class="btn btn-primary btn-small" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+    
+<header class="page-hero"><div class="container"><span class="section-label">Docs</span><h1>Public docs that make the platform <span class="gradient-text">easier to trust</span>.</h1><p class="lead">The public website does not need to mirror every field in the app. It needs to explain the structure clearly: what ELARIS does, how the hardware flow works, what the module model is and where the project is going.</p></div></header>
+<section class="section-tight" id="modules"><div class="container doc-layout"><aside class="doc-sidebar"><h3>Browse</h3><a href="#module-reference">Module reference</a><a href="#hardware-flow">Hardware flow</a><a href="#entity-model">Entities and zones</a><a href="#public-docs-next">Next docs pages</a></aside><div><section class="doc-section" id="module-reference"><h3>Module reference</h3><p class="kicker">Use this page to explain the idea of the module library, then send deeper readers to GitHub and in-product help where needed.</p><div class="kv-grid"><div><strong>Climate</strong></div><div>Thermostat, hydronic and thermal control flows for real heating and plant-side work.</div><div><strong>Lighting</strong></div><div>Switches, PIR, presence, lux and dimming logic with schedules and scenarios.</div><div><strong>Shading</strong></div><div>Awning and blind modules with weather and travel protection logic.</div><div><strong>Water</strong></div><div>Irrigation, pump and leak-aware logic with outdoor and utility relevance.</div><div><strong>Energy</strong></div><div>Monitoring, load shifting and power-aware decisions.</div><div><strong>Custom</strong></div><div>Industrial and bespoke logic when a project goes beyond generic templates.</div></div></section><section class="doc-section" id="hardware-flow"><h3>Hardware flow</h3><p class="kicker">Boards publish config and telemetry, ELARIS turns them into entities, and those entities are mapped into modules.</p><div class="terminal"><div class="terminal-head"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="mono">ELARIS flow</span></div><pre><span class="code-note">device/config</span>  → announce capabilities and entities
+<span class="code-note">device/tele/*</span> → send sensor and live values
+<span class="code-note">device/state/*</span> → send relay/output state
+
+ELARIS discovers → Pending IO → approval → entity naming → module mapping.</pre></div></section><section class="doc-section" id="entity-model"><h3>Entities and zones</h3><p class="kicker">This is one of the strongest ideas in the product. Raw device IO becomes readable building language before it enters automation logic.</p><div class="grid-2" style="margin-top:14px;"><div class="list-card"><strong>Readable naming</strong><p>Outdoor temp, salon light relay, awning wind sensor and similar names are far better than raw pin thinking.</p></div><div class="list-card"><strong>Reusable mapping</strong><p>Once the entity exists, the same platform can map it into any module that needs it.</p></div></div></section><section class="doc-section" id="public-docs-next"><h3>Next public docs pages</h3><div class="grid-2" style="margin-top:12px;"><div class="list-card"><strong>Hardware catalog</strong><p>Supported boards, common sensors, practical pin notes and good starting kits.</p></div><div class="list-card"><strong>Module pages</strong><p>A public module page per major module family with readable examples and screenshots.</p></div><div class="list-card"><strong>Changelog</strong><p>Show how actively the platform is moving.</p></div><div class="list-card"><strong>Security / local-first</strong><p>Explain the privacy and local operation story directly and clearly.</p></div></div></section></div></div></section>
+
+    <footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="index.html" style="margin-bottom:14px; display:inline-flex;">
+        <img class="brand-mark" src="assets/favicon.ico" alt="ELARIS logo" />
+        <div class="brand-copy">
+          <strong>ELARIS</strong>
+          <span>Smart Control</span>
+        </div>
+      </a>
+      <p>Local-first automation for lighting, climate, water, energy, shading, ESPHome devices and custom building logic.</p>
+      <div class="link-row">
+        <a class="chip-link" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a class="chip-link" href="community.html#coming-soon">Discord</a>
+        <a class="chip-link" href="community.html#coming-soon">Telegram</a>
+        <a class="chip-link" href="community.html#coming-soon">X</a>
+        <a class="chip-link" href="community.html#coming-soon">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <a href="features.html">Features</a>
+      <a href="modules.html">Modules</a>
+      <a href="hardware.html">ESPHome & Hardware</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="docs.html">Docs</a>
+    </div>
+    <div>
+      <h4>Roadmap</h4>
+      <a href="roadmap.html">What is shipping now</a>
+      <a href="roadmap.html#next">Next up</a>
+      <a href="roadmap.html#voice-ai">Voice & AI</a>
+      <a href="roadmap.html#more-modules">More modules on the road</a>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <small>GitHub is live now. Discord, Telegram, X and WhatsApp are reserved in the site flow and can point to the real channels later.</small>
+    </div>
+  </div>
+  <div class="container footer-note">
+    <small>© <span data-year></span> ELARIS Control.</small>
+    <small>elariccontrol.online</small>
+  </div>
+</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

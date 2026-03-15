@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — ELARIS</title>
+  <meta name="description" content="Dashboard, modules, scenes, entities, installer flow and ESPHome hardware onboarding in one platform." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/favicon.ico" alt="ELARIS logo" />
+      <div class="brand-copy">
+        <strong>ELARIS</strong>
+        <span>Smart Control</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a data-nav href="index.html">Home</a>
+      <a data-nav href="features.html">Features</a>
+      <a data-nav href="modules.html">Modules</a>
+      <a data-nav href="hardware.html">ESPHome & Hardware</a>
+      <a data-nav href="roadmap.html">Roadmap</a>
+      <a data-nav href="docs.html">Docs</a>
+      <a data-nav href="community.html">Community</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-small" href="community.html">Channels</a>
+      <a class="btn btn-primary btn-small" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+    
+<header class="page-hero"><div class="container"><span class="section-label">Features</span><h1>The product is the <span class="gradient-text">full workflow</span>, not one screen.</h1><p class="lead">ELARIS is strongest when you look at the whole chain together: dashboard, modules, scenes, entities, installer, logs, history and ESPHome board workflows inside one platform.</p><div class="subnav"><a href="#operations">Operations</a><a href="#modules">Modules</a><a href="#installer">Installer</a><a href="#hardware">Hardware</a><a href="#security">Local-first</a></div></div></header>
+<section class="section-tight" id="operations"><div class="container grid-3"><div class="card"><div class="icon-chip">🖥️</div><h3>Dashboard</h3><p>Weather, time, scenes, recent events and system overview in one operator-friendly page.</p></div><div class="card"><div class="icon-chip">🎬</div><h3>Scenes</h3><p>One-tap actions for everyday workflows, testing and repeatable control.</p></div><div class="card"><div class="icon-chip">📜</div><h3>History & logs</h3><p>See what happened, when it happened and why, without leaving the product.</p></div></div></section>
+<section class="section-tight" id="modules"><div class="container showcase"><div class="shot-frame"><img src="assets/modules-library.png" alt="ELARIS modules list" /></div><div><span class="section-label">Module-driven design</span><h2>Reusable automation logic with clear IO contracts.</h2><div class="side-list"><div class="list-card"><strong>Readable by installers</strong><p>The module itself explains what inputs and outputs it needs.</p></div><div class="list-card"><strong>Easier to commission</strong><p>Mapping and readiness feedback make setup faster than hand-made custom rules for every project.</p></div><div class="list-card"><strong>Easier to expand</strong><p>More modules can be added continuously without changing the whole mental model of the platform.</p></div></div></div></div></section>
+<section class="section" id="installer"><div class="container"><span class="section-label">Installer & entities</span><h2>Approve IO once, reuse it everywhere.</h2><div class="steps" style="margin-top:22px;"><div class="step"><div class="step-no">1</div><div><h3>Discovery</h3><p>Boards publish config and telemetry through MQTT so the platform sees what hardware is really there.</p></div></div><div class="step"><div class="step-no">2</div><div><h3>Pending IO</h3><p>New channels land in a staging flow before they become live building entities.</p></div></div><div class="step"><div class="step-no">3</div><div><h3>Entity naming & zoning</h3><p>Raw channels become meaningful objects like outdoor temperature, salon light relay or awning wind sensor.</p></div></div><div class="step"><div class="step-no">4</div><div><h3>Module mapping</h3><p>Those entities are mapped into domain modules with visual validation and clear summaries.</p></div></div></div></div></section>
+<section class="section-tight" id="hardware"><div class="container grid-2"><div class="card"><div class="icon-chip">🧪</div><h3>ESPHome installer</h3><p>Device setup, generated YAML, compile/flash flow and logs are part of the platform rather than a disconnected external step.</p></div><div class="card"><div class="icon-chip">➕</div><h3>Add peripheral to existing device</h3><p>Grow a live board with more sensors and channels instead of rebuilding the full hardware definition every time.</p></div><div class="card"><div class="icon-chip">📦</div><h3>Pending auto-register after first report</h3><p>After an OTA update and device report, new peripherals can land in Pending IO automatically.</p></div><div class="card"><div class="icon-chip">♻️</div><h3>OTA + rollback mindset</h3><p>Safer hardware iteration is a real part of the product roadmap, not an afterthought.</p></div></div></section>
+<section class="section-tight" id="security"><div class="container cta-panel"><span class="section-label">Local-first</span><h2>Designed to stay close to your hardware and your data.</h2><div class="grid-3" style="margin-top:18px;"><div class="list-card"><strong>Runs on your infrastructure</strong><p>ELARIS is built around local operation, local MQTT and your own deployment choices.</p></div><div class="list-card"><strong>Roles, sites and installer views</strong><p>The product is structured for real projects with different users and different scopes.</p></div><div class="list-card"><strong>No fake cloud dependency</strong><p>The platform story is strongest when it stays practical, local and transparent.</p></div></div></div></section>
+
+    <footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="index.html" style="margin-bottom:14px; display:inline-flex;">
+        <img class="brand-mark" src="assets/favicon.ico" alt="ELARIS logo" />
+        <div class="brand-copy">
+          <strong>ELARIS</strong>
+          <span>Smart Control</span>
+        </div>
+      </a>
+      <p>Local-first automation for lighting, climate, water, energy, shading, ESPHome devices and custom building logic.</p>
+      <div class="link-row">
+        <a class="chip-link" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a class="chip-link" href="community.html#coming-soon">Discord</a>
+        <a class="chip-link" href="community.html#coming-soon">Telegram</a>
+        <a class="chip-link" href="community.html#coming-soon">X</a>
+        <a class="chip-link" href="community.html#coming-soon">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <a href="features.html">Features</a>
+      <a href="modules.html">Modules</a>
+      <a href="hardware.html">ESPHome & Hardware</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="docs.html">Docs</a>
+    </div>
+    <div>
+      <h4>Roadmap</h4>
+      <a href="roadmap.html">What is shipping now</a>
+      <a href="roadmap.html#next">Next up</a>
+      <a href="roadmap.html#voice-ai">Voice & AI</a>
+      <a href="roadmap.html#more-modules">More modules on the road</a>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <small>GitHub is live now. Discord, Telegram, X and WhatsApp are reserved in the site flow and can point to the real channels later.</small>
+    </div>
+  </div>
+  <div class="container footer-note">
+    <small>© <span data-year></span> ELARIS Control.</small>
+    <small>elariccontrol.online</small>
+  </div>
+</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
