@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ELARIS Control — Local-first smart control</title>
-  <meta name="description" content="ELARIS is a local-first smart control platform for modules, ESPHome onboarding, scenes, history and practical automation." />
+  <title>ELARIS — Local-first smart control</title>
+  <meta name="description" content="ELARIS is a self-hosted automation platform for homes, villas, hotels and industrial projects. ESPHome onboarding, module-driven automation, real-time dashboard." />
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,7 +29,6 @@
       <a data-nav href="community.html">Community</a>
     </div>
     <div class="nav-actions">
-      <a class="btn btn-ghost btn-small" href="community.html">Channels</a>
       <a class="btn btn-primary btn-small" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
   </div>
@@ -38,92 +37,118 @@
 <header class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="section-label">ELARIS Control</span>
-      <h1>Smart control with a <span class="gradient-text">product-grade feel</span>.</h1>
-      <p class="lead">ELARIS is a local-first automation platform for homes, villas, hotels, boiler rooms, irrigation and custom engineering projects. It combines dashboard, modules, scenes, history, settings, entities, installer tools and ESPHome hardware onboarding inside one visual system.</p>
+      <span class="section-label">Local-first automation</span>
+      <h1>Control your building <span class="gradient-text">without the cloud</span>.</h1>
+      <p class="lead">ELARIS runs on a Raspberry Pi with MQTT at its core. Flash ESPHome boards, map IO to named entities, commission automation modules and operate everything from a real-time dashboard. No cloud, no subscription, no app required.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="features.html">Explore the platform</a>
-        <a class="btn btn-secondary" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">View core on GitHub</a>
+        <a class="btn btn-primary" href="features.html">See what it does</a>
+        <a class="btn btn-secondary" href="hardware.html">ESPHome onboarding</a>
       </div>
-      <div class="mini-stats">
-        <div class="mini-stat"><strong>Local-first</strong><span>Runs on your hardware with MQTT at the core.</span></div>
-        <div class="mini-stat"><strong>Module-driven</strong><span>Lighting, climate, water, energy, shading and more.</span></div>
-        <div class="mini-stat"><strong>Actively evolving</strong><span>New modules, integrations and hardware flows are landing continuously.</span></div>
-      </div>
-      <div class="logo-bar">
-        <span class="logo-pill">Dashboard</span>
-        <span class="logo-pill">Modules</span>
-        <span class="logo-pill">Scenes</span>
-        <span class="logo-pill">History</span>
-        <span class="logo-pill">ESPHome</span>
-        <span class="logo-pill">Installer</span>
+      <div class="tech-strip">
+        <span class="tech-pill">Raspberry Pi 4/5</span>
+        <span class="tech-pill">MQTT / Mosquitto</span>
+        <span class="tech-pill">ESP32 / ESPHome</span>
+        <span class="tech-pill">SQLite</span>
+        <span class="tech-pill">WebSocket</span>
       </div>
     </div>
     <div class="shot-stack">
-      <div class="shot-card shot-main"><img src="assets/dashboard.png" alt="ELARIS dashboard" /></div>
-      <div class="shot-card shot-float-a"><img src="assets/modules-library.png" alt="ELARIS modules library" /></div>
-      <div class="shot-card shot-float-b"><img src="assets/esphome-installer.png" alt="ELARIS ESPHome installer" /></div>
-      <div class="badge-float one">Modules + installer + history<small>One product language from hardware to automation.</small></div>
-      <div class="badge-float two">Add peripheral flow<small>Boards can grow without rebuilding the whole device.</small></div>
+      <div class="shot-card shot-main"><img src="assets/dashboard_1.png" alt="ELARIS dashboard" /></div>
+      <div class="shot-card shot-float-a"><img src="assets/modules_1.png" alt="ELARIS modules" /></div>
+      <div class="shot-card shot-float-b"><img src="assets/esphome_1.png" alt="ESPHome installer" /></div>
+      <div class="badge-float one">20+ modules<small>Lighting, climate, water, energy, shading</small></div>
+      <div class="badge-float two">USB + OTA flash<small>Zero-config ESPHome onboarding</small></div>
     </div>
   </div>
 </header>
+
 <section class="section-tight">
-  <div class="container grid-4">
-    <div class="card"><div class="icon-chip">🧭</div><h3>Operator-ready dashboard</h3><p>Weather, scenes, recent events and system overview live in one clean surface that feels like a product, not a collection of tools.</p></div>
-    <div class="card"><div class="icon-chip">🧩</div><h3>Modules instead of spaghetti rules</h3><p>Lighting, thermostat, awning, irrigation, energy and custom logic are modeled as modules with clear IO expectations.</p></div>
-    <div class="card"><div class="icon-chip">🔧</div><h3>Installer workflow built in</h3><p>Boards appear, IO is approved, entities are organized by site and zone, and modules can be commissioned with visual feedback.</p></div>
-    <div class="card"><div class="icon-chip">📡</div><h3>ESPHome is part of the product</h3><p>Flash boards, review YAML, add peripherals, push OTA updates and auto-register pending IO after a device report.</p></div>
-  </div>
-</section>
-<section class="section" id="screens">
   <div class="container">
-    <span class="section-label">Real app screens</span>
-    <h2>Real screens from the platform, not mockups.</h2>
-    <div class="screenshot-grid" style="margin-top:28px;">
-      <article class="screen-card"><img src="assets/dashboard.png" alt="Dashboard" /><div class="screen-meta"><h3>Dashboard</h3><p>Clock, weather, scenes, system overview and recent events in one operator-facing page.</p></div></article>
-      <article class="screen-card"><img src="assets/modules-mapping.png" alt="Modules mapping" /><div class="screen-meta"><h3>Module commissioning</h3><p>Map IO, validate readiness and save modules with a setup flow that is easy to explain to real installers.</p></div></article>
-      <article class="screen-card"><img src="assets/settings.png" alt="Settings" /><div class="screen-meta"><h3>Settings, site and entities</h3><p>Location, entities, notifications and site-level configuration keep the platform practical for real projects.</p></div></article>
-      <article class="screen-card"><img src="assets/esphome-flash.png" alt="ESPHome flash" /><div class="screen-meta"><h3>Hardware onboarding</h3><p>Generated YAML, validation, flash logs and OTA workflows make hardware onboarding part of the ELARIS experience.</p></div></article>
+    <span class="section-label">What you get</span>
+    <h2>One platform, from board to automation.</h2>
+    <div class="grid-3" style="margin-top:22px;">
+      <div class="card"><div class="icon-chip">📡</div><h3>ESPHome onboarding</h3><p>Flash boards via USB or OTA. The wizard generates YAML, validates pin conflicts, compiles and flashes — all from the browser. Board profiles for KinCony KC868-A/B/F series are built in.</p></div>
+      <div class="card"><div class="icon-chip">🔌</div><h3>IO that makes sense</h3><p>Raw device channels land in Pending IO. You name them ("Front door sensor", "Salon light relay"), assign zones, and approve them into the entity registry. No more guessing what di_3 means.</p></div>
+      <div class="card"><div class="icon-chip">🧩</div><h3>Module-driven automation</h3><p>Lighting with PIR + schedule + lux. Thermostat with zones and shared pumps. Awning with wind/rain sensors. Water manager with leak detection. Each module explains what IO it needs.</p></div>
+      <div class="card"><div class="icon-chip">🖥️</div><h3>Operator dashboard</h3><p>Real-time clock, weather, one-tap scenes, recent events and system health. WebSocket pushes updates instantly. Role-based views for users, engineers and admins.</p></div>
+      <div class="card"><div class="icon-chip">📜</div><h3>History & rollups</h3><p>5-minute, hourly and daily rollups with min/max/avg/last. Full event log with MQTT debug. Data stays in your SQLite database — no external service.</p></div>
+      <div class="card"><div class="icon-chip">➕</div><h3>Add peripherals OTA</h3><p>Grow a live board without rebuilding the whole YAML. Add a BME280, DS18B20, MH-Z19 or PZEM-004T through the UI. The platform injects the sensor into the existing config and pushes OTA.</p></div>
     </div>
   </div>
 </section>
+
 <section class="section-tight">
-  <div class="container showcase">
-    <div>
-      <span class="section-label">What makes it strong</span>
-      <h2>From hardware onboarding to automation in one connected flow.</h2>
-      <div class="side-list">
-        <div class="list-card"><strong>Boards announce config and telemetry</strong><p>Devices speak over MQTT, ELARIS receives config and values, and the platform turns raw hardware into named building entities.</p></div>
-        <div class="list-card"><strong>Pending IO becomes clean system language</strong><p>Installer and entities pages turn raw device channels into readable, zoned, reusable objects before they ever hit automation logic.</p></div>
-        <div class="list-card"><strong>Modules become the commercial layer</strong><p>The same hardware can be reused across climate, water, shading, energy and lighting projects without rebuilding the logic every time.</p></div>
+  <div class="container">
+    <span class="section-label">Modules that ship today</span>
+    <h2>Automation logic, not spaghetti rules.</h2>
+    <div class="module-showcase" style="margin-top:22px;">
+      <div class="module-group">
+        <h4>Lighting</h4>
+        <div class="module-chips">
+          <span class="module-chip">Basic Light</span>
+          <span class="module-chip">Motion Light</span>
+          <span class="module-chip">Scheduled Light</span>
+          <span class="module-chip">Daylight Light</span>
+          <span class="module-chip">Motion + Daylight</span>
+          <span class="module-chip">Smart Lighting (scenarios)</span>
+          <span class="module-chip">Staircase</span>
+          <span class="module-chip">Interlocked Switches</span>
+          <span class="module-chip">Lighting (mega-module)</span>
+        </div>
+      </div>
+      <div class="module-group">
+        <h4>Climate & Energy</h4>
+        <div class="module-chips">
+          <span class="module-chip">Thermostat (zones)</span>
+          <span class="module-chip">Zoned Thermostat</span>
+          <span class="module-chip">Energy Monitor</span>
+          <span class="module-chip">Load Shifter</span>
+          <span class="module-chip">Solar System</span>
+          <span class="module-chip">Hydronic / Boiler</span>
+        </div>
+      </div>
+      <div class="module-group">
+        <h4>Water, Shading & Security</h4>
+        <div class="module-chips">
+          <span class="module-chip">Water Manager</span>
+          <span class="module-chip">Awning / Blind</span>
+          <span class="module-chip">Presence Simulator</span>
+          <span class="module-chip">Alarm Manager</span>
+          <span class="module-chip">Industrial Logic</span>
+        </div>
       </div>
     </div>
-    <div class="shot-frame"><img src="assets/module-help.png" alt="ELARIS module help" /></div>
+    <p style="text-align:center;margin-top:22px;"><a class="btn btn-ghost" href="modules.html">See all modules →</a></p>
   </div>
 </section>
+
+<section class="section-tight">
+  <div class="container showcase">
+    <div class="shot-frame"><img src="assets/esphome_flash.png" alt="ESPHome flash workflow" /></div>
+    <div>
+      <span class="section-label">Hardware onboarding</span>
+      <h2>Flash a board in 5 steps, not 50.</h2>
+      <div class="side-list">
+        <div class="list-card"><strong>1. Pick your transport</strong><p>USB for first-time flash, OTA for already-flashed devices. The wizard detects connected serial ports automatically.</p></div>
+        <div class="list-card"><strong>2. Name & choose board</strong><p>Select from KinCony KC868 profiles or go generic. The profile defines pins, I2C buses, PCF8574 mappings and entity defaults.</p></div>
+        <div class="list-card"><strong>3. Configure network</strong><p>WiFi or Ethernet (W5500). MQTT broker URL. The YAML is generated with the correct topic prefix and retained state publishing.</p></div>
+        <div class="list-card"><strong>4. Validate & flash</strong><p>Real-time compile logs in the browser. First compile takes 5-15 min (ESP-IDF). Subsequent flashes are fast.</p></div>
+        <div class="list-card"><strong>5. Device appears</strong><p>The board publishes its config to MQTT. ELARIS receives it, creates pending IO, and the device shows up in Installer ready for commissioning.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section-tight">
   <div class="container cta-panel">
-    <span class="section-label">Roadmap signal</span>
-    <h2>More modules are on the road — and development is moving fast.</h2>
+    <span class="section-label">Built for real projects</span>
+    <h2>From a single room to 100 devices.</h2>
     <div class="grid-3" style="margin-top:18px;">
-      <div class="list-card"><strong>Now</strong><p>More modules, cleaner installer flow, richer docs and a stronger ESPHome + peripheral story.</p></div>
-      <div class="list-card"><strong>Next</strong><p>Modbus support, more board profiles, deeper hardware templates and broader field integrations.</p></div>
-      <div class="list-card"><strong>Under evaluation</strong><p>Voice and AI workflows with Alexa, Google Home / Assistant and Microsoft Copilot-style assistant layers remain under evaluation.</p></div>
+      <div class="list-card"><strong>Homes & villas</strong><p>Lighting, climate, awning, pool, irrigation. One Pi handles a full property with room-level control.</p></div>
+      <div class="list-card"><strong>Hotels & apartments</strong><p>Ethernet-connected panels per room. Central MQTT broker. Each room is a site with its own modules and entities.</p></div>
+      <div class="list-card"><strong>Industrial & plant rooms</strong><p>Modbus on the roadmap. Today: RS485/RS232 sensors, custom industrial logic modules, and engineered thermal projects.</p></div>
     </div>
-    <a class="btn btn-primary" href="roadmap.html">See the roadmap</a>
-  </div>
-</section>
-<section class="section-tight" id="community">
-  <div class="container">
-    <span class="section-label">Links & contact</span>
-    <h2>GitHub is live, and ELARIS now has an active business contact point.</h2>
-    <div class="grid-4" style="margin-top:24px;">
-      <div class="card"><div class="icon-chip">🐙</div><h3>GitHub</h3><p>The core repository is public and linked from the site today.</p><a class="btn btn-secondary" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">Open repository</a></div>
-      <div class="card"><div class="icon-chip">✉️</div><h3>Email</h3><p>Use the official ELARIS address for project inquiries, support and installer communication.</p><a class="btn btn-secondary" href="mailto:info@elariscontrol.online">info@elariscontrol.online</a></div>
-      <div class="card"><div class="icon-chip">🌐</div><h3>Website</h3><p>The official ELARIS website for product pages, roadmap and platform overview.</p><a class="btn btn-secondary" href="https://elariscontrol.online" target="_blank" rel="noreferrer">Visit website</a></div>
-      <div class="card"><div class="icon-chip">🧭</div><h3>Roadmap</h3><p>See what is shipping now, what is next and where the platform is heading.</p><a class="btn btn-ghost" href="roadmap.html">Open roadmap</a></div>
-    </div>
+    <a class="btn btn-primary" href="use-cases.html">See use cases</a>
   </div>
 </section>
 
@@ -137,38 +162,34 @@
           <span>Smart Control</span>
         </div>
       </a>
-      <p>Local-first automation for climate, lighting, water, energy, shading, ESPHome devices and custom control projects.</p>
+      <p>Self-hosted automation for lighting, climate, water, energy, shading and ESPHome devices. Runs on a Raspberry Pi with MQTT at its core.</p>
       <div class="link-row">
         <a class="chip-link" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
-        <a class="chip-link" href="mailto:info@elariscontrol.online">Email</a>
-        <a class="chip-link" href="https://elariscontrol.online" target="_blank" rel="noreferrer">Website ↗</a>
+        <a class="chip-link" href="community.html#coming-soon">Discord</a>
+        <a class="chip-link" href="community.html#coming-soon">Telegram</a>
       </div>
     </div>
     <div>
-      <h4>Site</h4>
+      <h4>Product</h4>
       <a href="features.html">Features</a>
       <a href="modules.html">Modules</a>
       <a href="hardware.html">ESPHome & Hardware</a>
       <a href="use-cases.html">Use Cases</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
       <a href="docs.html">Docs</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="community.html">Community</a>
     </div>
     <div>
-      <h4>Roadmap</h4>
-      <a href="roadmap.html">What is shipping now</a>
-      <a href="roadmap.html#next">Next up</a>
-      <a href="roadmap.html#voice-ai">Voice & AI</a>
-      <a href="roadmap.html#more-modules">More modules on the road</a>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <a href="mailto:info@elariscontrol.online">info@elariscontrol.online</a>
-      <a href="https://elariscontrol.online" target="_blank" rel="noreferrer">elariscontrol.online ↗</a>
-      <small>Business inquiries, installer contact and project communication.</small>
+      <h4>Tech stack</h4>
+      <small>Node.js backend, SQLite database, Mosquitto MQTT, ESPHome firmware, WebSocket real-time, KinCony board profiles.</small>
     </div>
   </div>
   <div class="container footer-note">
     <small>© <span data-year></span> ELARIS Control.</small>
-    <small><a href="mailto:info@elariscontrol.online">info@elariscontrol.online</a> · elariscontrol.online</small>
+    <small>elariscontrol.online</small>
   </div>
 </footer>
   </div>

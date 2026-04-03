@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ESPHome & Hardware — ELARIS</title>
-  <meta name="description" content="Board onboarding, generated YAML, flash flow, peripherals and hardware expansion in ELARIS." />
+  <meta name="description" content="Board onboarding, YAML generation, USB/OTA flash, peripheral injection and KinCony board profiles." />
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,17 +29,57 @@
       <a data-nav href="community.html">Community</a>
     </div>
     <div class="nav-actions">
-      <a class="btn btn-ghost btn-small" href="community.html">Channels</a>
       <a class="btn btn-primary btn-small" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
   </div>
 </nav>
     
-<header class="page-hero"><div class="container"><span class="section-label">ESPHome & Hardware</span><h1>Hardware onboarding is part of the <span class="gradient-text">product story</span>.</h1><p class="lead">ELARIS is not just a dashboard that waits for hardware to magically exist. It already includes an ESPHome installer, board flows, generated YAML, flash logs and peripheral growth on existing devices.</p><div class="subnav"><a href="#installer-flow">Installer flow</a><a href="#peripherals">Peripheral growth</a><a href="#boards">Boards</a><a href="#next-hardware">What comes next</a></div></div></header>
-<section class="section-tight" id="installer-flow"><div class="container screenshot-grid"><article class="screen-card"><img src="assets/esphome-installer.png" alt="ESPHome installer" /><div class="screen-meta"><h3>ESPHome installer</h3><p>Board selection, setup steps and hardware-oriented onboarding that belongs inside ELARIS.</p></div></article><article class="screen-card"><img src="assets/esphome-flash.png" alt="ESPHome flash logs" /><div class="screen-meta"><h3>Compile and flash</h3><p>Validation, generated YAML and real flash logs make hardware changes visible and understandable.</p></div></article></div></section>
-<section class="section-tight" id="peripherals"><div class="container grid-2"><div class="card"><div class="icon-chip">➕</div><h3>Add peripheral to existing device</h3><p>Grow a live board with extra sensors or inputs instead of recreating the whole definition every time.</p></div><div class="card"><div class="icon-chip">🌡️</div><h3>Useful sensor growth</h3><p>DHT22, DS18B20, analog inputs and pulse-based flows make the installer story much stronger in the field.</p></div><div class="card"><div class="icon-chip">📥</div><h3>Pending IO after report</h3><p>After a successful update and device report, new hardware can appear in Pending IO for approval and mapping.</p></div><div class="card"><div class="icon-chip">🧠</div><h3>Board-aware validation</h3><p>Pin checks, conflict checks and warnings belong here because they save time and bad field mistakes.</p></div></div></section>
-<section class="section-tight" id="boards"><div class="container"><span class="section-label">Board approach</span><h2>Use board-aware labels where available. Stay flexible where they are not.</h2><div class="grid-3" style="margin-top:22px;"><div class="list-card"><strong>Friendly labels</strong><p>Boards like A16 can expose installer-friendly labels such as HT1, HT2 or analog inputs.</p></div><div class="list-card"><strong>Generic GPIO fallback</strong><p>The hardware flow should still work for boards without rich labels by validating real pin input intelligently.</p></div><div class="list-card"><strong>Not locked to one board family</strong><p>The ELARIS hardware layer stays broad enough to expand across supported ESPHome-capable boards.</p></div></div></div></section>
-<section class="section-tight" id="next-hardware"><div class="container cta-panel"><span class="section-label">Next hardware step</span><h2>Modbus is one of the next major integrations.</h2><p class="lead">This is worth saying publicly: ELARIS is under heavy development, and Modbus is an obvious next step because it opens the door to more industrial and commercial devices without losing the same ELARIS mapping model.</p><div class="grid-3" style="margin-top:18px;"><div class="list-card"><strong>Short term</strong><p>More boards, cleaner peripheral templates and stronger field validation.</p></div><div class="list-card"><strong>Next major layer</strong><p>Modbus support for broader integration with controllers, meters and industrial-style devices.</p></div><div class="list-card"><strong>Longer term</strong><p>Broader hardware bridges that still land in the same entity + module workflow.</p></div></div></div></section>
+<header class="page-hero"><div class="container"><span class="section-label">ESPHome & Hardware</span><h1>Hardware onboarding is <span class="gradient-text">part of the product</span>.</h1><p class="lead">ELARIS includes an ESPHome installer with board profiles, YAML generation, compile/flash flow, and OTA peripheral injection. No external tools needed.</p><div class="subnav"><a href="#installer-flow">Installer flow</a><a href="#peripherals">Peripheral growth</a><a href="#boards">Board profiles</a><a href="#next-hardware">What comes next</a></div></div></header>
+
+<section class="section-tight" id="installer-flow">
+  <div class="container screenshot-grid">
+    <article class="screen-card"><img src="assets/esphome_2.png" alt="ESPHome installer" /><div class="screen-meta"><h3>Board selection & config</h3><p>Pick transport (USB/OTA), name your device, choose a board profile. The wizard validates pin conflicts before compilation.</p></div></article>
+    <article class="screen-card"><img src="assets/esphome_3.png" alt="ESPHome flash logs" /><div class="screen-meta"><h3>Compile & flash</h3><p>Real-time compile logs streamed to the browser. First compile takes 5-15 min (ESP-IDF). Subsequent flashes are fast.</p></div></article>
+  </div>
+</section>
+
+<section class="section-tight" id="peripherals">
+  <div class="container grid-2">
+    <div class="card"><div class="icon-chip">➕</div><h3>Add peripheral OTA</h3><p>Add sensors to existing devices without rebuilding the full YAML. The platform reads the existing YAML, injects the new peripheral at the right position, validates pin conflicts, and pushes OTA. Supports 16+ types including I2C (BME280, INA219, CCS811) and UART/RS485 (MH-Z19, PZEM-004T).</p></div>
+    <div class="card"><div class="icon-chip">📥</div><h3>Pending IO after report</h3><p>After a successful OTA update, the device publishes its config to MQTT. New peripherals from the config land in Pending IO automatically — ready for approval, naming and module mapping.</p></div>
+    <div class="card"><div class="icon-chip">🧠</div><h3>Board-aware validation</h3><p>Pin conflict detection, strapping pin warnings, reserved pin rules. Each board profile defines its own pinRules (reserved, inputOnly, noPullup, flashPins, strapping). The validator catches mistakes before they reach the device.</p></div>
+    <div class="card"><div class="icon-chip">🔄</div><h3>Managed device overlay</h3><p>Devices can be marked as "managed" with a custom MQTT topic root. The YAML importer automatically generates the MQTT overlay (discovery, state publishing, command routing). Native ESPHome topics are filtered to prevent ghost entries.</p></div>
+  </div>
+</section>
+
+<section class="section-tight" id="boards">
+  <div class="container">
+    <span class="section-label">Board profiles</span>
+    <h2>Board profiles define everything.</h2>
+    <p class="lead" style="margin-bottom:22px;">Each board profile is a JSON file in <code class="mono">src/esphome/catalog_profiles/</code> that defines pinouts, I2C buses, PCF8574 mappings, entity defaults and supported peripherals. Profiles are auto-seeded into the database on startup.</p>
+    <div class="grid-3" style="margin-top:22px;">
+      <div class="list-card"><strong>KinCony KC868-F16</strong><p>ESP32-S3, 16CH relay, 16DI, 4AI, Ethernet W5500, RS485. PCF8575 I2C expanders. Removable relay terminals.</p></div>
+      <div class="list-card"><strong>KinCony KC868-F24</strong><p>ESP32-S3, 24CH relay, 24DI, Ethernet W5500. PCF8575 I2C expanders. Industrial-grade board for large installations.</p></div>
+      <div class="list-card"><strong>KinCony KC868-F8 / F32</strong><p>8CH and 32CH variants. Same profile system, different capacity. All support USB flash and OTA updates.</p></div>
+      <div class="list-card"><strong>KinCony KC868-A6v3</strong><p>ESP32-S3, 6CH relay, 6DI, 2AO (0-10V via DAC), RS485, RS232. PCF8574 I2C expanders. DS3231 RTC.</p></div>
+      <div class="list-card"><strong>KinCony KC868-B4 / B24</strong><p>Battery-powered and large I/O variants. Profile-driven configuration with the same installer flow.</p></div>
+      <div class="list-card"><strong>Generic boards</strong><p>No profile? Go generic. The wizard validates real pin input intelligently and generates clean YAML for any ESP32 board.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" id="next-hardware">
+  <div class="container cta-panel">
+    <span class="section-label">Next hardware step</span>
+    <h2>Modbus is the next major integration.</h2>
+    <p class="lead">ELARIS already handles RS485/RS232 sensors through ESPHome. Modbus (RTU/TCP) will open the door to VFDs, power meters, PLCs and industrial devices — all landing in the same entity + module workflow.</p>
+    <div class="grid-3" style="margin-top:18px;">
+      <div class="list-card"><strong>Short term</strong><p>More board profiles, cleaner peripheral templates, stronger field validation and A6v3 AO (analog output) support.</p></div>
+      <div class="list-card"><strong>Next major layer</strong><p>Modbus RTU/TCP support for broader integration with controllers, meters and industrial-style devices.</p></div>
+      <div class="list-card"><strong>Longer term</strong><p>Broader hardware bridges that still land in the same entity registry and module mapping workflow.</p></div>
+    </div>
+  </div>
+</section>
 
     <footer class="footer">
   <div class="container footer-grid">
@@ -51,38 +91,34 @@
           <span>Smart Control</span>
         </div>
       </a>
-      <p>Local-first automation for climate, lighting, water, energy, shading, ESPHome devices and custom control projects.</p>
+      <p>Self-hosted automation for lighting, climate, water, energy, shading and ESPHome devices. Runs on a Raspberry Pi with MQTT at its core.</p>
       <div class="link-row">
         <a class="chip-link" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
-        <a class="chip-link" href="mailto:info@elariscontrol.online">Email</a>
-        <a class="chip-link" href="https://elariscontrol.online" target="_blank" rel="noreferrer">Website ↗</a>
+        <a class="chip-link" href="community.html#coming-soon">Discord</a>
+        <a class="chip-link" href="community.html#coming-soon">Telegram</a>
       </div>
     </div>
     <div>
-      <h4>Site</h4>
+      <h4>Product</h4>
       <a href="features.html">Features</a>
       <a href="modules.html">Modules</a>
       <a href="hardware.html">ESPHome & Hardware</a>
       <a href="use-cases.html">Use Cases</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
       <a href="docs.html">Docs</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="community.html">Community</a>
     </div>
     <div>
-      <h4>Roadmap</h4>
-      <a href="roadmap.html">What is shipping now</a>
-      <a href="roadmap.html#next">Next up</a>
-      <a href="roadmap.html#voice-ai">Voice & AI</a>
-      <a href="roadmap.html#more-modules">More modules on the road</a>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <a href="mailto:info@elariscontrol.online">info@elariscontrol.online</a>
-      <a href="https://elariscontrol.online" target="_blank" rel="noreferrer">elariscontrol.online ↗</a>
-      <small>Business inquiries, installer contact and project communication.</small>
+      <h4>Tech stack</h4>
+      <small>Node.js, SQLite, Mosquitto MQTT, ESPHome, WebSocket, KinCony board profiles.</small>
     </div>
   </div>
   <div class="container footer-note">
     <small>© <span data-year></span> ELARIS Control.</small>
-    <small><a href="mailto:info@elariscontrol.online">info@elariscontrol.online</a> · elariscontrol.online</small>
+    <small>elariscontrol.online</small>
   </div>
 </footer>
   </div>

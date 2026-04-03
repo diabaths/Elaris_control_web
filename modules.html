@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modules — ELARIS</title>
-  <meta name="description" content="Lighting, climate, water, shading, energy and custom logic modules inside ELARIS." />
+  <meta name="description" content="Lighting, climate, water, shading, energy and custom logic modules with clear IO contracts." />
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,16 +29,54 @@
       <a data-nav href="community.html">Community</a>
     </div>
     <div class="nav-actions">
-      <a class="btn btn-ghost btn-small" href="community.html">Channels</a>
       <a class="btn btn-primary btn-small" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
   </div>
 </nav>
     
-<header class="page-hero"><div class="container"><span class="section-label">Modules</span><h1>Modules are the <span class="gradient-text">commercial layer</span> of ELARIS.</h1><p class="lead">The app already shows that ELARIS is not a random rule builder. It is a platform with reusable automation modules for climate, lighting, water, shading, energy and custom engineering logic.</p></div></header>
-<section class="section-tight"><div class="container screenshot-grid"><article class="screen-card"><img src="assets/modules-library.png" alt="Module library" /><div class="screen-meta"><h3>Module library</h3><p>Organized catalog of automation capabilities, grouped by real-world purpose.</p></div></article><article class="screen-card"><img src="assets/module-help.png" alt="Module help page" /><div class="screen-meta"><h3>Module help</h3><p>Each module can explain its required and optional IO, which is powerful for installers.</p></div></article></div></section>
-<section class="section-tight"><div class="container module-grid"><div class="list-card"><strong>Lighting Control</strong><p>Switch, PIR, presence, lux, dimming and schedule-aware behavior.</p></div><div class="list-card"><strong>Thermostat</strong><p>Zones, room temperatures, relays, shared pumps and practical heating control.</p></div><div class="list-card"><strong>Awning / Blind Control</strong><p>Wind, rain, lux, end-stops and motor travel logic.</p></div><div class="list-card"><strong>Water Manager</strong><p>Valves, pumps, leak signals, water meter inputs and field-friendly control.</p></div><div class="list-card"><strong>Solar System</strong><p>Collector temperature logic, pumps and auxiliary heating decisions.</p></div><div class="list-card"><strong>Energy Monitor</strong><p>Real-time power, daily usage insight and a strong base for energy-driven automation.</p></div><div class="list-card"><strong>Load Shifter</strong><p>Protective and threshold-driven control when power demand needs to stay in range.</p></div><div class="list-card"><strong>Smart Lighting</strong><p>Scenario-based lighting with dimming, PIR logic, schedules and time windows.</p></div><div class="list-card"><strong>Industrial Logic</strong><p>Custom machine or process logic where feedback and special conditions matter.</p></div><div class="list-card"><strong>Presence Simulator</strong><p>Simulated occupancy for real-world away modes and security-minded use.</p></div><div class="list-card"><strong>Hydronic / Boiler-side logic</strong><p>Strong fit for plant rooms, recirculation, pump control and engineered thermal projects.</p></div><div class="list-card"><strong>Custom logic modules</strong><p>When the project needs a special module, ELARIS can grow without losing structure.</p></div></div></section>
-<section class="section-tight" id="more-modules"><div class="container cta-panel"><span class="section-label">Still expanding</span><h2>More modules are on the road.</h2><p class="lead">ELARIS is under heavy development and the module catalog will keep growing. The direction is to keep shipping new domain logic where real installations demand it.</p><div class="grid-3" style="margin-top:18px;"><div class="list-card"><strong>Today</strong><p>Core modules already cover climate, lighting, water, shading, energy and custom engineering logic.</p></div><div class="list-card"><strong>Next wave</strong><p>More building, utility and plant modules that reuse the same installer + entity + module pattern.</p></div><div class="list-card"><strong>Long term</strong><p>A broad library where a project feels custom while still staying inside one ELARIS language.</p></div></div></div></section>
+<header class="page-hero"><div class="container"><span class="section-label">Modules</span><h1>Automation logic, <span class="gradient-text">not spaghetti rules</span>.</h1><p class="lead">Each module is a self-contained automation unit with declared IO requirements, configurable setpoints and a clear purpose. Map entities once, reuse everywhere.</p></div></header>
+
+<section class="section-tight">
+  <div class="container">
+    <span class="section-label">Shipped & working</span>
+    <h2>Modules that run today.</h2>
+    <div class="module-grid" style="margin-top:22px;">
+      <div class="list-card"><strong>Basic Light</strong><p>Wall switch (toggle or follow mode) controls a relay. Manual override from dashboard. Simple, reliable.</p></div>
+      <div class="list-card"><strong>Motion Light</strong><p>Switch + PIR sensor. Motion rising edge turns light ON. Auto-OFF after configurable timeout (pir_timeout). Manual override.</p></div>
+      <div class="list-card"><strong>Scheduled Light</strong><p>Switch + time schedule with sunrise/sunset support. Light turns ON at schedule_on, OFF at schedule_off. Supports "sunset-30", "sunrise+60" syntax.</p></div>
+      <div class="list-card"><strong>Daylight Light</strong><p>Switch + lux sensor with 15% hysteresis band. Light turns ON when dark (below lux_threshold), OFF when bright (above lux_threshold × 1.15).</p></div>
+      <div class="list-card"><strong>Motion + Daylight</strong><p>Switch + PIR + lux sensor. Motion triggers light only when it's dark. Auto-OFF after timeout. Bright conditions override motion.</p></div>
+      <div class="list-card"><strong>Scheduled Motion</strong><p>Switch + PIR + schedule. PIR only triggers during the schedule window. Outside the window, motion is ignored entirely.</p></div>
+      <div class="list-card"><strong>Staircase</strong><p>Multiple button inputs (up to 4 switches) + optional PIR with common OFF timer. Any button press starts/restarts the timer. Timer hold broadcasts remaining seconds.</p></div>
+      <div class="list-card"><strong>Interlocked Switches</strong><p>Multi-point toggle with debounce. Button mode (momentary press toggles) or switch mode (any state change toggles). Configurable debounce_ms.</p></div>
+      <div class="list-card"><strong>Lighting (mega-module)</strong><p>Combined mode selector: auto, PIR, lux, schedule, or combined. Dimmer (AO) support with dim_on_level and dim_off_level. Double-tap detection. Lux-based dimming target. 16 setpoints, full-featured.</p></div>
+      <div class="list-card"><strong>Smart Lighting</strong><p>Scenario-based lighting with JSON-defined scenarios. Each scenario has a name, time window, and relay states. PIR integration with configurable threshold and timeout.</p></div>
+      <div class="list-card"><strong>Thermostat</strong><p>Single or zoned heating/cooling with hysteresis. Per-zone setpoints, names and schedules. Shared pump control. Window detection (rapid temp drop). Pre-lead time calculation. Min run/off time protection.</p></div>
+      <div class="list-card"><strong>Zoned Thermostat</strong><p>Multi-zone thermostat with manual override. Per-zone setpoint_delta adjustment. Zone demand evaluation with hysteresis. Schedule-aware setpoint resolution.</p></div>
+      <div class="list-card"><strong>Energy Monitor</strong><p>Real-time power tracking with tariff-based cost calculation. Daily/monthly history. Peak hour detection. Timezone-aware aggregation.</p></div>
+      <div class="list-card"><strong>Load Shifter</strong><p>Threshold-driven load control. Protects against power demand exceeding limits. Per-load protection windows (start_h to end_h). Test mode for safe commissioning.</p></div>
+      <div class="list-card"><strong>Solar System</strong><p>Collector temperature logic. Pump control based on collector vs tank temperature differential. Auxiliary heating decisions.</p></div>
+      <div class="list-card"><strong>Water Manager</strong><p>Valve and pump control. Leak signal detection. Water meter pulse counting. Field-friendly scheduling and protection windows.</p></div>
+      <div class="list-card"><strong>Awning / Blind</strong><p>Wind sensor (anemometer), rain sensor, lux threshold, end-stop detection. Motor travel time calibration. Auto-retract on high wind or rain.</p></div>
+      <div class="list-card"><strong>Presence Simulator</strong><p>Simulated occupancy for away mode. Randomized light patterns based on historical usage. Configurable time windows.</p></div>
+      <div class="list-card"><strong>Industrial Logic</strong><p>Custom machine or process logic. Feedback loops, special conditions, engineered control for plant rooms and industrial equipment.</p></div>
+      <div class="list-card"><strong>Hydronic / Boiler</strong><p>Plant room logic: recirculation pumps, zone valves, boiler control. Engineered thermal projects with pump protection and minimum run times.</p></div>
+      <div class="list-card"><strong>Alarm Manager</strong><p>Latched alarm handling with reset capability. Engineer lock protection. Per-alarm configuration and acknowledgment.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" id="more-modules">
+  <div class="container cta-panel">
+    <span class="section-label">On the roadmap</span>
+    <h2>More modules are coming.</h2>
+    <div class="grid-3" style="margin-top:18px;">
+      <div class="list-card"><strong>Pool management</strong><p>Pool pump scheduling, temperature monitoring, chemical dosing reminders, filtration cycle optimization.</p></div>
+      <div class="list-card"><strong>Irrigation</strong><p>Zone-based watering schedules, rain sensor integration, soil moisture thresholds, seasonal adjustment.</p></div>
+      <div class="list-card"><strong>Modbus integration</strong><p>RTU/TCP support for VFDs, power meters, PLCs and industrial devices that don't speak MQTT/ESPHome.</p></div>
+    </div>
+  </div>
+</section>
 
     <footer class="footer">
   <div class="container footer-grid">
@@ -50,38 +88,34 @@
           <span>Smart Control</span>
         </div>
       </a>
-      <p>Local-first automation for climate, lighting, water, energy, shading, ESPHome devices and custom control projects.</p>
+      <p>Self-hosted automation for lighting, climate, water, energy, shading and ESPHome devices. Runs on a Raspberry Pi with MQTT at its core.</p>
       <div class="link-row">
         <a class="chip-link" href="https://github.com/elaris-control/core" target="_blank" rel="noreferrer">GitHub ↗</a>
-        <a class="chip-link" href="mailto:info@elariscontrol.online">Email</a>
-        <a class="chip-link" href="https://elariscontrol.online" target="_blank" rel="noreferrer">Website ↗</a>
+        <a class="chip-link" href="community.html#coming-soon">Discord</a>
+        <a class="chip-link" href="community.html#coming-soon">Telegram</a>
       </div>
     </div>
     <div>
-      <h4>Site</h4>
+      <h4>Product</h4>
       <a href="features.html">Features</a>
       <a href="modules.html">Modules</a>
       <a href="hardware.html">ESPHome & Hardware</a>
       <a href="use-cases.html">Use Cases</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
       <a href="docs.html">Docs</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="community.html">Community</a>
     </div>
     <div>
-      <h4>Roadmap</h4>
-      <a href="roadmap.html">What is shipping now</a>
-      <a href="roadmap.html#next">Next up</a>
-      <a href="roadmap.html#voice-ai">Voice & AI</a>
-      <a href="roadmap.html#more-modules">More modules on the road</a>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <a href="mailto:info@elariscontrol.online">info@elariscontrol.online</a>
-      <a href="https://elariscontrol.online" target="_blank" rel="noreferrer">elariscontrol.online ↗</a>
-      <small>Business inquiries, installer contact and project communication.</small>
+      <h4>Tech stack</h4>
+      <small>Node.js, SQLite, Mosquitto MQTT, ESPHome, WebSocket, KinCony board profiles.</small>
     </div>
   </div>
   <div class="container footer-note">
     <small>© <span data-year></span> ELARIS Control.</small>
-    <small><a href="mailto:info@elariscontrol.online">info@elariscontrol.online</a> · elariscontrol.online</small>
+    <small>elariscontrol.online</small>
   </div>
 </footer>
   </div>
